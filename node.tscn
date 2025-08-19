@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cxw4bc0mgpkc5"]
+[gd_scene load_steps=17 format=4 uid="uid://cxw4bc0mgpkc5"]
 
 [ext_resource type="Texture2D" uid="uid://d4np6dkc8msj5" path="res://TilesNew-export.png" id="1_sy5k4"]
 [ext_resource type="Script" uid="uid://b3uhk34lfaqnj" path="res://main.gd" id="1_tda05"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cobxxxax00m0d" path="res://player.png" id="2_j2q8x"]
 [ext_resource type="Texture2D" uid="uid://daoryqx8v5eq5" path="res://boomerang.png" id="5_qn3nj"]
 [ext_resource type="Script" uid="uid://csl12rbrtwqlq" path="res://player_boomerang.gd" id="6_l6pdb"]
+[ext_resource type="Script" uid="uid://dipgrvg52c0r1" path="res://marker_2d.gd" id="7_l6pdb"]
 [ext_resource type="PackedScene" uid="uid://dc5pldnfo6251" path="res://bullet.tscn" id="7_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://dh4xn6rsus3gk" path="res://Arrow.png" id="8_r657h"]
+[ext_resource type="Script" uid="uid://dxs02jn58y0bt" path="res://arrow.gd" id="9_f0urt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2q8x"]
 texture = ExtResource("1_sy5k4")
@@ -32,10 +35,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_112p8"]
-size = Vector2(20, 1200)
+size = Vector2(103.5, 1200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2u21"]
-size = Vector2(1715, 24)
+size = Vector2(1978, 91)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_tda05")
@@ -69,6 +72,14 @@ script = ExtResource("6_l6pdb")
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 position = Vector2(210.8, 290.4)
+script = ExtResource("7_l6pdb")
+
+[node name="arrow" type="Sprite2D" parent="Player/Marker2D"]
+position = Vector2(47.2, 0)
+rotation = 1.5708
+scale = Vector2(0.115196, 0.115196)
+texture = ExtResource("8_r657h")
+script = ExtResource("9_f0urt")
 
 [node name="Bullet" parent="Player" instance=ExtResource("7_qn3nj")]
 position = Vector2(114, -1026)
@@ -76,19 +87,20 @@ position = Vector2(114, -1026)
 [node name="Out of bounds" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Out of bounds"]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds/StaticBody2D"]
-position = Vector2(-12, 598)
+position = Vector2(-44.5, 598)
 shape = SubResource("RectangleShape2D_112p8")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Out of bounds/StaticBody2D"]
-position = Vector2(1686, 600)
+position = Vector2(1725.25, 597)
 shape = SubResource("RectangleShape2D_112p8")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Out of bounds/StaticBody2D"]
-position = Vector2(838.5, -10)
+position = Vector2(859, -43.5)
 shape = SubResource("RectangleShape2D_e2u21")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Out of bounds/StaticBody2D"]
-position = Vector2(837, 1210)
+position = Vector2(860, 1233)
 shape = SubResource("RectangleShape2D_e2u21")
