@@ -22,7 +22,7 @@ func shoot():
 	if Main.thrown != true:
 		Main.thrown = true
 		var b = Bullet.instantiate()
-		Main.add_child(b)
+		owner.add_child(b)
 		b.transform = Marker.global_transform
 		await get_tree().create_timer(throwcd).timeout
 		Main.thrown = false

@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Main="*res://main.gd"
-Player="*res://player.gd"
 
 [editor_plugins]
 
