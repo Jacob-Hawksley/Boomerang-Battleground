@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfc0osgr8s2q6"
+path="res://.godot/imported/Battleground Beats_Intro.mp3-60d5a7fdb525a0185633cc65699a65d0.mp3str"
+
+[deps]
+
+source_file="res://Battleground Beats_Intro.mp3"
+dest_files=["res://.godot/imported/Battleground Beats_Intro.mp3-60d5a7fdb525a0185633cc65699a65d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
