@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var Bullet = preload('res://bullet.tscn')
 @onready var throwcd = 2
 @export var Marker: Marker2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	position.x = 500
@@ -14,6 +15,14 @@ func _process(delta: float) -> void:
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
+	if input_direction.x < 0:
+		sprite.flip_h = true
+	elif input_direction.x > 0:
+		sprite.flip_h = false
+	if velocity == Vector2.ZERO:
+		sprite.play('default')
+	else:
+		sprite.play("run")
 
 func _physics_process(delta):
 	get_input()
