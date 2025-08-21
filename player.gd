@@ -2,16 +2,28 @@ extends CharacterBody2D
 
 @export var speed = 400
 @export var Bullet = preload('res://bullet.tscn')
-@onready var throwcd = 2
+var throwcd = 2
 @export var Marker: Marker2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hpbar: TextureProgressBar = $Camera2D/TextureProgressBar
+var hp = 7
+var maxhp = 7
+var iframes = false
 
 func _ready() -> void:
 	position.x = 500
 	position.y = 500
+	hp = maxhp
+	hpbar.max_value = maxhp
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	hpbar.value = hp
+	if Main.gamestate == 'upgrade':
+		hp = maxhp
+		hpbar.max_value = maxhp
+	if hp <= 0:
+		get_tree().quit()
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
@@ -35,4 +47,3 @@ func shoot():
 		b.transform = Marker.global_transform
 		await get_tree().create_timer(throwcd).timeout
 		Main.thrown = false
-		

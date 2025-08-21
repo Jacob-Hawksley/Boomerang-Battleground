@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cxw4bc0mgpkc5"]
+[gd_scene load_steps=37 format=4 uid="uid://cxw4bc0mgpkc5"]
 
 [ext_resource type="Texture2D" uid="uid://d4np6dkc8msj5" path="res://TilesNew-export.png" id="1_sy5k4"]
 [ext_resource type="Script" uid="uid://b3uhk34lfaqnj" path="res://main.gd" id="1_tda05"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://njpnaj5yo5x1" path="res://Hana Caraka - Base Character [sample]/idle.png" id="4_sps8e"]
 [ext_resource type="Texture2D" uid="uid://daoryqx8v5eq5" path="res://boomerang.png" id="5_qn3nj"]
 [ext_resource type="Script" uid="uid://csl12rbrtwqlq" path="res://player_boomerang.gd" id="6_l6pdb"]
+[ext_resource type="Texture2D" uid="uid://2l1ieuc5we08" path="res://bottomhp.png" id="6_oaeeq"]
+[ext_resource type="Texture2D" uid="uid://dv85tncsl141c" path="res://Playerhp.png" id="7_ey15c"]
 [ext_resource type="Script" uid="uid://dipgrvg52c0r1" path="res://marker_2d.gd" id="7_l6pdb"]
 [ext_resource type="PackedScene" uid="uid://dc5pldnfo6251" path="res://bullet.tscn" id="7_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://dh4xn6rsus3gk" path="res://Arrow.png" id="8_r657h"]
@@ -15,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cfc0osgr8s2q6" path="res://Battleground Beats_Intro.mp3" id="12_aeaoo"]
 [ext_resource type="Script" uid="uid://bh53btfdatorm" path="res://battleground_beats_intro.gd" id="13_sps8e"]
 [ext_resource type="AudioStream" uid="uid://dkiij0158flwd" path="res://Battleground Beats_Wave.mp3" id="14_bnlop"]
+[ext_resource type="Script" uid="uid://c85suima4mv8u" path="res://hitbox.gd" id="14_ey15c"]
 [ext_resource type="Script" uid="uid://bp2n5b7wonxv2" path="res://battleground_beats_wave.gd" id="15_oaeeq"]
 [ext_resource type="AudioStream" uid="uid://cbvak0i4mr455" path="res://Battleground Beats_Bass.mp3" id="16_ey15c"]
 [ext_resource type="Script" uid="uid://5hqr41ugpth" path="res://battleground_beats_bass.gd" id="17_p1837"]
@@ -142,6 +145,15 @@ autoplay = "default"
 position = Vector2(3.49997, -1.00002)
 position_smoothing_speed = 20.0
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Player/Camera2D"]
+offset_left = -566.5
+offset_top = -314.0
+offset_right = -388.5
+offset_bottom = -274.0
+value = 100.0
+texture_under = ExtResource("6_oaeeq")
+texture_progress = ExtResource("7_ey15c")
+
 [node name="PlayerBoomerang" type="Sprite2D" parent="Player"]
 position = Vector2(35.3, -16.6)
 scale = Vector2(0.8, 0.8)
@@ -162,9 +174,11 @@ script = ExtResource("9_f0urt")
 [node name="Bullet" parent="Player" instance=ExtResource("7_qn3nj")]
 position = Vector2(114, -1026)
 
-[node name="hitbox" type="Area2D" parent="Player"]
+[node name="hitbox" type="Area2D" parent="Player" node_paths=PackedStringArray("player")]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("14_ey15c")
+player = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/hitbox"]
 position = Vector2(-0.500031, -2.28882e-05)

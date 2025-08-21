@@ -1,0 +1,137 @@
+[gd_scene load_steps=19 format=3 uid="uid://ml04qb4ly1fd"]
+
+[ext_resource type="Texture2D" uid="uid://2u2mncpglofs" path="res://dinoCharactersVersion1.1/sheets/DinoSprites - tard.png" id="1_nthab"]
+[ext_resource type="Script" uid="uid://bvh1ayjwheoei" path="res://projectile_enemy.gd" id="1_sk66u"]
+[ext_resource type="Texture2D" uid="uid://2l1ieuc5we08" path="res://bottomhp.png" id="2_sk66u"]
+[ext_resource type="Texture2D" uid="uid://ch65r1rtb04us" path="res://Tophp.png" id="3_0ki2n"]
+[ext_resource type="Texture2D" uid="uid://b4c7fbiuo2fvf" path="res://Enemyhp.png" id="4_1dkjp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2skm1"]
+atlas = ExtResource("1_nthab")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk4il"]
+atlas = ExtResource("1_nthab")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v6uv"]
+atlas = ExtResource("1_nthab")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbkn5"]
+atlas = ExtResource("1_nthab")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4qf0"]
+atlas = ExtResource("1_nthab")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyhod"]
+atlas = ExtResource("1_nthab")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijis5"]
+atlas = ExtResource("1_nthab")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk66u"]
+atlas = ExtResource("1_nthab")
+region = Rect2(336, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ki2n"]
+atlas = ExtResource("1_nthab")
+region = Rect2(384, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dkjp"]
+atlas = ExtResource("1_nthab")
+region = Rect2(408, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wb418"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2skm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk4il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v6uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbkn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4qf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyhod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijis5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk66u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ki2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dkjp")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddon7"]
+radius = 32.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_klrft"]
+radius = 31.7805
+
+[node name="ProjectileEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_sk66u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_wb418")
+animation = &"shoot"
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ddon7")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -29.0
+offset_top = -37.0
+offset_right = 142.0
+offset_bottom = -8.0
+scale = Vector2(0.346, 0.378)
+nine_patch_stretch = true
+texture_under = ExtResource("2_sk66u")
+texture_over = ExtResource("3_0ki2n")
+texture_progress = ExtResource("4_1dkjp")
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CircleShape2D_klrft")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

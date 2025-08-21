@@ -4,6 +4,8 @@ var speed = 100
 var player: CharacterBody2D 
 var hp = 100
 var maxhp = 100
+var basedamage = 1
+var damage = 1
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hpbar: TextureProgressBar = $TextureProgressBar
 # Called when the node enters the scene tree for the first time.
@@ -12,6 +14,7 @@ func _ready() -> void:
 	position.y = 50 + (randi() % 1125)
 	player = get_node('../Player')
 	hpbar.max_value = maxhp
+	
 	
 func _process(delta: float) -> void:
 	hpbar.value = hp
@@ -34,3 +37,10 @@ func hurt(amount):
 	
 	
   
+
+
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.has_method('hurtplayer'):
+		area.hurtplayer(damage)
