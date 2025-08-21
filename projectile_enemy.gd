@@ -55,9 +55,9 @@ func hurt(amount):
 	
 func shoot():
 	var f = fire.instantiate()
-	get_node(".").add_child(f)
+	get_tree().root.add_child(f)
 	f.transform = marker.global_transform
-  #fire!!!!
+  
 
 
 
