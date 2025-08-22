@@ -14,10 +14,13 @@ var shootcd = 0
 @onready var marker: Marker2D = $Marker2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	maxhp *= Main.hpscale
+	hp = maxhp
 	position.x = 50 + (randi() % 1550)
 	position.y = 50 + (randi() % 1125)
 	player = get_node('../Player')
 	hpbar.max_value = maxhp
+	
 	
 	
 	

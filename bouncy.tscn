@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwpkm6ddhtyq5"]
+
+[ext_resource type="Texture2D" uid="uid://ys7woinltcvn" path="res://Bouncy.png" id="1_3hqqi"]
+[ext_resource type="Script" uid="uid://co33kfpkk01yk" path="res://upgrade_bouncy.gd" id="1_c6i1v"]
+
+[node name="Bouncy" type="Button"]
+process_mode = 3
+offset_right = 8.0
+offset_bottom = 8.0
+text = "BOUNCY
++1 Bounce
+"
+icon = ExtResource("1_3hqqi")
+script = ExtResource("1_c6i1v")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
