@@ -2,7 +2,6 @@ extends Node
 @export var basicenemy = preload("res://basic_enemy.tscn")
 @export var projenemy = preload("res://projectile_enemy.tscn")
 var random = 0
-
 func _ready() -> void:
 	Main.enemynumber = 0
 	Main.enemymax = 5
@@ -18,7 +17,10 @@ func _process(delta: float) -> void:
 				spawnbasic()
 		else:
 			spawnbasic()
-		
+	if Main.gamestate == 'wave':
+		Main.wavetimer -= delta
+	if Main.wavetimer <= 0:
+		Main.gamestate = 'upgrade'
 		
 func spawnbasic():
 	var b = basicenemy.instantiate()

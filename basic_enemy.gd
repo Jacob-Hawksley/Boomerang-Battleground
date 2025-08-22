@@ -18,6 +18,12 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	hpbar.value = hp
+	if Main.gamestate == 'mainmenu':
+		Main.enemynumber -= 1
+		queue_free()
+	if Main.gamestate == 'upgrade':
+		Main.enemynumber -= 1
+		queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	velocity = (player.global_position - global_position).normalized() * speed

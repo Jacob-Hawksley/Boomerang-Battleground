@@ -27,12 +27,17 @@ func _process(delta: float) -> void:
 	if shootcd <= 0:
 		shootcd = 4
 		sprite.play("shoot")
-		await get_tree().create_timer(0.7).timeout
+		await get_tree().create_timer(0.6).timeout
 		shoot()
 		sprite.play("default")
 	if shootcd > 0:
 		shootcd -= delta
-
+	if Main.gamestate == 'mainmenu':
+		Main.enemynumber -= 1
+		queue_free()
+	if Main.gamestate == 'upgrade':
+		Main.enemynumber -= 1
+		queue_free()
 func _physics_process(delta: float) -> void:
 	if navagent.distance_to_target() > 230:
 		velocity = (player.global_position - global_position).normalized() * speed
@@ -43,6 +48,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = true
 	else:
 		sprite.flip_h = false
+	marker.rotation = get_angle_to(player.global_position)
 	move_and_slide()
 	
 

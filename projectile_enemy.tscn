@@ -90,11 +90,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddon7"]
-radius = 32.0
-height = 64.0
+radius = 15.0
+height = 44.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_klrft"]
-radius = 31.7805
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sk66u"]
+radius = 15.0
+height = 42.0
 
 [node name="ProjectileEnemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -104,10 +105,7 @@ script = ExtResource("1_sk66u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_wb418")
-animation = &"shoot"
 autoplay = "default"
-frame = 2
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ddon7")
@@ -128,7 +126,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
-shape = SubResource("CircleShape2D_klrft")
+shape = SubResource("CapsuleShape2D_sk66u")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
