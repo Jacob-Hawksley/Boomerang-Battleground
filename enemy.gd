@@ -24,9 +24,9 @@ func _process(delta: float) -> void:
 		
 func spawnbasic():
 	var b = basicenemy.instantiate()
-	owner.add_child(b)
+	add_child(b)
 	Main.enemynumber += 1
 func spawnproj():
 	var p = projenemy.instantiate()
-	owner.add_child(p)
+	add_child(p)
 	Main.enemynumber += 1
