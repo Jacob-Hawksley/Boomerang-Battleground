@@ -19,7 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://cfc0osgr8s2q6" path="res://Battleground Beats_Intro.mp3" id="12_aeaoo"]
 [ext_resource type="Script" uid="uid://ku06pppnngfp" path="res://wavelabel.gd" id="13_j31fo"]
 [ext_resource type="Script" uid="uid://bh53btfdatorm" path="res://battleground_beats_intro.gd" id="13_sps8e"]
-[ext_resource type="AudioStream" uid="uid://dkiij0158flwd" path="res://Battleground Beats_Wave.mp3" id="14_bnlop"]
 [ext_resource type="Script" uid="uid://c85suima4mv8u" path="res://hitbox.gd" id="14_ey15c"]
 [ext_resource type="Script" uid="uid://beflbxkj4ij00" path="res://wavetimelabel.gd" id="14_o6fs4"]
 [ext_resource type="Script" uid="uid://bp2n5b7wonxv2" path="res://battleground_beats_wave.gd" id="15_oaeeq"]
@@ -27,6 +26,7 @@
 [ext_resource type="Script" uid="uid://5hqr41ugpth" path="res://battleground_beats_bass.gd" id="17_p1837"]
 [ext_resource type="Texture2D" uid="uid://cyli1pmkr6dwv" path="res://play.png" id="22_qv2vy"]
 [ext_resource type="Texture2D" uid="uid://bshp26thnjrla" path="res://controls.png" id="23_8jewq"]
+[ext_resource type="AudioStream" uid="uid://bgbw70cjf4vog" path="res://Battleground Beats_3.mp3" id="24_o6fs4"]
 [ext_resource type="Script" uid="uid://1nengxk43abl" path="res://upgrades.gd" id="26_85l3h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2q8x"]
@@ -259,7 +259,7 @@ script = ExtResource("13_sps8e")
 
 [node name="BattlegroundBeatsWave" type="AudioStreamPlayer2D" parent="Music"]
 process_mode = 3
-stream = ExtResource("14_bnlop")
+stream = ExtResource("24_o6fs4")
 max_distance = 200000.0
 script = ExtResource("15_oaeeq")
 
