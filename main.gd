@@ -10,3 +10,4 @@ var bounces = 0
 var upgraded = false
 var hpscale = 1
 var damagescale = 1
+var maxhp = 7

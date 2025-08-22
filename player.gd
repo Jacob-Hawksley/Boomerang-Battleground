@@ -6,24 +6,26 @@ var throwcd = 2
 @export var Marker: Marker2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hpbar: TextureProgressBar = $Camera2D/TextureProgressBar
+@onready var hpnum: Label = $Camera2D/TextureProgressBar/Label
 var hp = 7
-var maxhp = 7
 var iframes = false
 
 func _ready() -> void:
 	position.x = 500
 	position.y = 500
-	hp = maxhp
-	hpbar.max_value = maxhp
+	hpbar.max_value = Main.maxhp
+	hp = Main.maxhp
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	hpbar.value = hp
-	if Main.gamestate == 'upgrade':
-		hp = maxhp
-		hpbar.max_value = maxhp
+	if Main.upgraded:
+		hpbar.max_value = Main.maxhp
+		hp = Main.maxhp
 	if hp <= 0:
 		get_tree().quit()
+	hpnum.text = str(hp) + '/' + str(Main.maxhp)
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed

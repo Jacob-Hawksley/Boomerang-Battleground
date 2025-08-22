@@ -15,6 +15,8 @@ func _physics_process(delta: float) -> void:
 		rotation_degrees -= 180
 	if speed < 750 and needtoturn == false:
 		speed *= 1.04
+	if Main.gamestate == 'upgrade':
+		queue_free()
 	
 	position += transform.x * speed * delta
 	timepassed += delta

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://buhm61gjqry7w"]
+
+[ext_resource type="Texture2D" uid="uid://bplwhxgfgww3x" path="res://Healthy.png" id="1_rhp5h"]
+[ext_resource type="Script" uid="uid://dii0pogshqbw5" path="res://upgrade_healthy.gd" id="2_16gxb"]
+
+[node name="Healthy" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "HEALTHY
++3 Health"
+icon = ExtResource("1_rhp5h")
+script = ExtResource("2_16gxb")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://cxw4bc0mgpkc5"]
+[gd_scene load_steps=45 format=4 uid="uid://cxw4bc0mgpkc5"]
 
 [ext_resource type="Texture2D" uid="uid://d4np6dkc8msj5" path="res://TilesNew-export.png" id="1_sy5k4"]
 [ext_resource type="Script" uid="uid://b3uhk34lfaqnj" path="res://main.gd" id="1_tda05"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dc5pldnfo6251" path="res://bullet.tscn" id="7_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://dh4xn6rsus3gk" path="res://Arrow.png" id="8_r657h"]
 [ext_resource type="Script" uid="uid://dxs02jn58y0bt" path="res://arrow.gd" id="9_f0urt"]
+[ext_resource type="Script" uid="uid://bdxesetdklt4s" path="res://label.gd" id="9_twhnx"]
 [ext_resource type="Script" uid="uid://jriygc1dts66" path="res://play.gd" id="10_3xwg0"]
 [ext_resource type="Script" uid="uid://bduvhsbrsh1cp" path="res://enemy.gd" id="11_jfkdj"]
 [ext_resource type="Script" uid="uid://drqtls7jlcr8o" path="res://controls.gd" id="12_85l3h"]
@@ -185,6 +186,15 @@ offset_bottom = -274.0
 value = 100.0
 texture_under = ExtResource("6_oaeeq")
 texture_progress = ExtResource("7_ey15c")
+
+[node name="Label" type="Label" parent="Player/Camera2D/TextureProgressBar"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 3.00003
+offset_right = 104.0
+offset_bottom = 26.0
+horizontal_alignment = 1
+script = ExtResource("9_twhnx")
 
 [node name="Play" type="Button" parent="Player/Camera2D"]
 process_mode = 3
