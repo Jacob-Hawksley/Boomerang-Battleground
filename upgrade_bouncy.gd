@@ -13,5 +13,8 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	Main.bounces += 1
+	if Main.bounces == 0:
+		Main.bounces += 2
+	else:
+		Main.bounces += 1
 	Main.upgraded = true

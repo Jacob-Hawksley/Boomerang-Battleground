@@ -13,5 +13,6 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	Main.maxhp += 3
+	Main.maxhp += 2
+	Main.hpregen += 0.5
 	Main.upgraded = true

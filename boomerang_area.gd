@@ -4,7 +4,7 @@ var speed = 750
 var needtoturn = true
 var timepassed = 0
 var damage = 50
-var bouncesremaining = 0
+var bouncesremaining = 1
 @export var explosion = preload("res://explosion.tscn")
 func _ready() -> void:
 	bouncesremaining = Main.bounces
@@ -34,7 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 	elif bouncesremaining >= 1:
 		rotate(get_angle_to(Vector2(875,550)))  
 		bouncesremaining -= 1
-	if bouncesremaining <= 0:
+	if bouncesremaining == 0:
 		queue_free()
 	if Main.explosive == true:
 		var e = explosion.instantiate()

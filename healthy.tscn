@@ -7,7 +7,8 @@
 offset_right = 8.0
 offset_bottom = 8.0
 text = "HEALTHY
-+3 Health"
++2 Health
++0.5 Healh Regen"
 icon = ExtResource("1_rhp5h")
 script = ExtResource("2_16gxb")
 

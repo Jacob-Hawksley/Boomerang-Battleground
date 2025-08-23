@@ -26,6 +26,8 @@ func _process(delta: float) -> void:
 	if hp <= 0:
 		get_tree().quit()
 	hpnum.text = str(ceil(hp)) + '/' + str(Main.maxhp)
+	if hp < Main.maxhp:
+		hp += Main.hpregen * delta
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed

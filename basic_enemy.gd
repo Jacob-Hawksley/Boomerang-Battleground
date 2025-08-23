@@ -10,7 +10,7 @@ var damage = 1
 @onready var hpbar: TextureProgressBar = $TextureProgressBar
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	maxhp *= (Main.hpscale * (Main.wave - 1))
+	maxhp *= (Main.hpscale * Main.wave) + 1
 	hp = maxhp
 	position.x = 50 + (randi() % 1550)
 	position.y = 50 + (randi() % 1125)
