@@ -25,8 +25,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method('hurt'):
-		body.hurt(damage)
-	
+		body.hurt(damage * Main.damagemult)
 	if body.has_method('hurt'):
 		if bouncesremaining >= 1:
 			rotate(get_angle_to(body.position) + 3.14159)

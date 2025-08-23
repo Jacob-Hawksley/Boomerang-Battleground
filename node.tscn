@@ -138,8 +138,8 @@ tile_set = SubResource("TileSet_112p8")
 [node name="Out of bounds" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Out of bounds"]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Out of bounds/StaticBody2D"]
 position = Vector2(-44.5, 598)
@@ -228,6 +228,13 @@ offset_right = 19.5
 offset_bottom = -265.0
 horizontal_alignment = 1
 script = ExtResource("14_o6fs4")
+
+[node name="xp" type="Label" parent="Player/Camera2D"]
+offset_left = -516.5
+offset_top = -273.0
+offset_right = -476.5
+offset_bottom = -250.0
+horizontal_alignment = 1
 
 [node name="PlayerBoomerang" type="Sprite2D" parent="Player"]
 position = Vector2(35.3, -16.6)

@@ -7,8 +7,11 @@ var throwcd = 2
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hpbar: TextureProgressBar = $Camera2D/TextureProgressBar
 @onready var hpnum: Label = $Camera2D/TextureProgressBar/Label
+@onready var xpbar: Label = $Camera2D/xp
 var hp = 7
 var iframes = false
+var reqxp = 5
+
 
 func _ready() -> void:
 	position.x = 500
@@ -19,15 +22,24 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	hpbar.max_value = Main.maxhp
 	hpbar.value = hp
 	if Main.gamestate == 'upgrade':
 		hpbar.max_value = Main.maxhp
 		hp = Main.maxhp
 	if hp <= 0:
 		get_tree().quit()
-	hpnum.text = str(ceil(hp)) + '/' + str(Main.maxhp)
+	hpnum.text = str(floor(hp)) + '/' + str(Main.maxhp)
 	if hp < Main.maxhp:
 		hp += Main.hpregen * delta
+	if Main.xp >= reqxp:
+		Main.xp -= reqxp
+		Main.level += 1
+		Main.maxhp += 1
+		Main.damagemult += 0.1
+		reqxp *= 1.3
+		reqxp = ceil(reqxp)
+	xpbar.text = 'Level ' + str(Main.level) + ': ' + str(Main.xp) + '/' + str(reqxp) 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed

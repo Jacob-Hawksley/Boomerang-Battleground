@@ -10,14 +10,22 @@ var charging = false
 var chargecd = 3
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hpbar: TextureProgressBar = $TextureProgressBar
+@onready var collision: CollisionShape2D = $CollisionShape2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_node('../../Player')
 	apply_scale(Vector2(4,4))
 	maxhp *= (Main.hpscale * Main.wave) + 1
 	hp = maxhp
 	position.x = 50 + (randi() % 1550)
 	position.y = 50 + (randi() % 1125)
-	player = get_node('../../Player')
+	for i in range(5):
+		if position.x > player.global_position.x - 150 and position.x < player.global_position.x + 150:
+			if position.y > player.global_position.y - 150 and position.y < player.global_position.y + 150:
+					position.x = 50 + (randi() % 1550)
+					position.y = 50 + (randi() % 1125)
+
+	
 	hpbar.max_value = maxhp
 	
 	
@@ -46,21 +54,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func charge():
+	
 	charging = true
 	sprite.play('charge')
 	chargecd = 3
 	damage = 1.5
 	var tempvelocity = velocity
-	velocity = tempvelocity * 4
-	await get_tree().create_timer(2).timeout
+	velocity = tempvelocity * 5
+	await get_tree().create_timer((randi() % 3) + 2).timeout
 	charging = false
 	damage = 1
+	
+	
 
 
 
 func hurt(amount):
 	hp -= amount
 	if hp <= 0:
+		Main.xp += 3
 		Main.enemynumber -= 1
 		queue_free()
 		

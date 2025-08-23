@@ -14,11 +14,16 @@ var shootcd = 0
 @onready var marker: Marker2D = $Marker2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_node('../../Player')
 	maxhp *= (Main.hpscale * Main.wave) + 1
 	hp = maxhp
 	position.x = 50 + (randi() % 1550)
 	position.y = 50 + (randi() % 1125)
-	player = get_node('../../Player')
+	for i in range(5):
+		if position.x > player.global_position.x - 150 and position.x < player.global_position.x + 150:
+			if position.y > player.global_position.y - 150 and position.y < player.global_position.y + 150:
+					position.x = 50 + (randi() % 1550)
+					position.y = 50 + (randi() % 1125)
 	hpbar.max_value = maxhp
 	
 	
@@ -58,6 +63,7 @@ func _physics_process(delta: float) -> void:
 func hurt(amount):
 	hp -= amount
 	if hp <= 0:
+		Main.xp += 2
 		Main.enemynumber -= 1
 		queue_free()
 		

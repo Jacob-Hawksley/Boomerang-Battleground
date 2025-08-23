@@ -3,7 +3,7 @@ extends Area2D
 
 var overlap = []
 func _ready() -> void:
-	scale = Vector2(8,8)
+	scale = Vector2(Main.explosionsize,Main.explosionsize)
 	visible = true
 	await get_tree().create_timer(0.5).timeout
 	queue_free()

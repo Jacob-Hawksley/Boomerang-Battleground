@@ -10,7 +10,8 @@ func _process(delta: float) -> void:
 		queue_free()
 	else:
 		lifespan -= delta
-	
+	if Main.gamestate == 'upgrade':
+		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method('hurtplayer'):

@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 		spawn_upgrade_cards()
 		
 	if Main.upgraded == true:
-		Main.wavetimer = 25
+		Main.wavetimer = 60
 		Main.wave += 1
 		Main.hpscale *= 1.1
 		Main.damagescale *= 1.1
@@ -45,8 +45,10 @@ func spawn_upgrade_cards():
 			add_child(card_instance)
 			card_instance.position = player.global_position
 			if i == 0:
+				card_instance.slots('left')
 				card_instance.position.x += -181.5
 				card_instance.position.y += -49
 			else:
+				card_instance.slots('right')
 				card_instance.position.x += 49.5
 				card_instance.position.y += -48
