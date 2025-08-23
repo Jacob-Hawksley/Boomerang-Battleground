@@ -34,13 +34,14 @@ func _on_body_entered(body: Node2D) -> void:
 	elif bouncesremaining >= 1:
 		rotate(get_angle_to(Vector2(875,550)))  
 		bouncesremaining -= 1
+	if bouncesremaining <= 0:
+		queue_free()
 	if Main.explosive == true:
 		var e = explosion.instantiate()
 		get_node("/root/Main").add_child(e)
 		e.global_position = position
 		
-	if bouncesremaining <= 0:
-		queue_free()
+	
 		
 		
 		
