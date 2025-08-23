@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcj82bpx7ylnf"]
+
+[ext_resource type="Texture2D" uid="uid://bhrm1u5vm2vlv" path="res://FastThrowing.png" id="1_3iamy"]
+[ext_resource type="Script" uid="uid://c6mia5l3xmob1" path="res://upgrade_fast_throws.gd" id="1_tla01"]
+
+[node name="FastThrows" type="Button"]
+process_mode = 3
+offset_right = 8.0
+offset_bottom = 8.0
+text = "FAST THROWS
+-10% Throw Cooldown"
+icon = ExtResource("1_3iamy")
+script = ExtResource("1_tla01")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

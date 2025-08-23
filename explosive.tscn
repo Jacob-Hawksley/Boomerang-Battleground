@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8q6e7hrbwf23"]
+[gd_scene load_steps=3 format=3 uid="uid://8q6e7hrbwf23"]
 
 [ext_resource type="Script" uid="uid://bpb6vkv5rvh4d" path="res://upgrade_explosive.gd" id="1_n0ylg"]
+[ext_resource type="Texture2D" uid="uid://dtxb58nmhump3" path="res://Explosive.png" id="1_oes7m"]
 
 [node name="Explosive" type="Button"]
 process_mode = 3
@@ -8,6 +9,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "EXPLOSIVE 
 Boomerangs explode"
+icon = ExtResource("1_oes7m")
 script = ExtResource("1_n0ylg")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

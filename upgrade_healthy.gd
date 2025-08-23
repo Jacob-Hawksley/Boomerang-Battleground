@@ -1,5 +1,5 @@
 extends Button
-
+var timer = 0
 var slot = ''
 func slots(place):
 	slot = place
@@ -10,9 +10,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	timer += 2
 	if Main.gamestate == 'wave':
 		queue_free()
-	if Input.is_action_just_pressed(slot):
+	if Input.is_action_just_pressed(slot) and timer > 1:
 		Main.maxhp += 2
 		Main.hpregen += 0.5
 		Main.upgraded = true

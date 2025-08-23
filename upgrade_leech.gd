@@ -14,16 +14,9 @@ func _process(delta: float) -> void:
 	if Main.gamestate == 'wave':
 		queue_free()
 	if Input.is_action_just_pressed(slot) and timer > 1:
-		if Main.explosive:
-			Main.explosiondamage *= 1.3
-			Main.explosionsize += 0.5
-		Main.explosive = true
+		Main.leech += 0.25
 		Main.upgraded = true
 
-
 func _on_pressed() -> void:
-	if Main.explosive:
-		Main.explosiondamage *= 1.3
-		Main.explosionsize += 0.5
-	Main.explosive = true
+	Main.leech += 0.25
 	Main.upgraded = true

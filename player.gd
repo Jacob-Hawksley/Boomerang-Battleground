@@ -2,13 +2,11 @@ extends CharacterBody2D
 
 @export var speed = 400
 @export var Bullet = preload('res://bullet.tscn')
-var throwcd = 2
 @export var Marker: Marker2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hpbar: TextureProgressBar = $Camera2D/TextureProgressBar
 @onready var hpnum: Label = $Camera2D/TextureProgressBar/Label
 @onready var xpbar: Label = $Camera2D/xp
-var hp = 7
 var iframes = false
 var reqxp = 5
 
@@ -17,21 +15,21 @@ func _ready() -> void:
 	position.x = 500
 	position.y = 500
 	hpbar.max_value = Main.maxhp
-	hp = Main.maxhp
+	Main.hp = Main.maxhp
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	hpbar.max_value = Main.maxhp
-	hpbar.value = hp
+	hpbar.value = Main.hp
 	if Main.gamestate == 'upgrade':
 		hpbar.max_value = Main.maxhp
-		hp = Main.maxhp
-	if hp <= 0:
+		Main.hp = Main.maxhp
+	if Main.hp <= 0:
 		get_tree().quit()
-	hpnum.text = str(floor(hp)) + '/' + str(Main.maxhp)
-	if hp < Main.maxhp:
-		hp += Main.hpregen * delta
+	hpnum.text = str(floor(Main.hp)) + '/' + str(Main.maxhp)
+	if Main.hp < Main.maxhp:
+		Main.hp += Main.hpregen * delta
 	if Main.xp >= reqxp:
 		Main.xp -= reqxp
 		Main.level += 1
@@ -61,5 +59,5 @@ func shoot():
 		var b = Bullet.instantiate()
 		owner.add_child(b)
 		b.transform = Marker.global_transform
-		await get_tree().create_timer(throwcd).timeout
+		await get_tree().create_timer(Main.throwcd).timeout
 		Main.thrown = false

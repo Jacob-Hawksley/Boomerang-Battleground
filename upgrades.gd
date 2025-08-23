@@ -4,6 +4,8 @@ var randomcard = null
 @export var healthy: PackedScene = preload("res://healthy.tscn")
 @onready var player: CharacterBody2D = get_node('../Player')
 @export var explosive = preload("res://explosive.tscn")
+@export var leech = preload('res://leech.tscn')
+@export var fastthrows = preload('res://fast_throws.tscn')
 var wavebuffer = false
 var upgrade_spawned = false
 
@@ -30,7 +32,7 @@ func spawn_upgrade_cards():
 	get_tree().paused = true
 	
 	for i in range(2):
-		randomcard = randi() % 3
+		randomcard = randi() % 5
 		var card_instance = null
 		
 		match randomcard:
@@ -40,6 +42,10 @@ func spawn_upgrade_cards():
 				card_instance = healthy.instantiate()
 			2:
 				card_instance = explosive.instantiate()
+			3:
+				card_instance = leech.instantiate()
+			4:
+				card_instance = fastthrows.instantiate()
 		
 		if card_instance:
 			add_child(card_instance)
