@@ -4,7 +4,8 @@ var speed = 750
 var needtoturn = true
 var timepassed = 0
 var damage = 50
-var bouncesremaining = 1
+var bouncesremaining = 0
+@export var explosion = preload("res://explosion.tscn")
 func _ready() -> void:
 	bouncesremaining = Main.bounces
 func _physics_process(delta: float) -> void:
@@ -25,8 +26,7 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method('hurt'):
 		body.hurt(damage)
-	if bouncesremaining <= 0:
-		queue_free()
+	
 	if body.has_method('hurt'):
 		if bouncesremaining >= 1:
 			rotate(get_angle_to(body.position) + 3.14159  )
@@ -34,4 +34,14 @@ func _on_body_entered(body: Node2D) -> void:
 	elif bouncesremaining >= 1:
 		rotate(get_angle_to(Vector2(875,550)))  
 		bouncesremaining -= 1
+	if Main.explosive == true:
+		var e = explosion.instantiate()
+		add_child(e)
+		e.global_position = position
+		print(e.global_position)
+	if bouncesremaining <= 0:
+		queue_free()
+		
+		
+		
 	

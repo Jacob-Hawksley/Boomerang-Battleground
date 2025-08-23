@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://8q6e7hrbwf23"]
+
+[ext_resource type="Script" uid="uid://bpb6vkv5rvh4d" path="res://upgrade_explosive.gd" id="1_n0ylg"]
+
+[node name="Explosive" type="Button"]
+process_mode = 3
+offset_right = 8.0
+offset_bottom = 8.0
+text = "EXPLOSIVE 
+Boomerangs explode"
+script = ExtResource("1_n0ylg")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

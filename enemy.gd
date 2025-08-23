@@ -9,7 +9,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Main.gamestate == 'wave' and Main.enemynumber < Main.enemymax:
-		if Main.wave > 3:
+		if Main.wave >= 3:
 			random = randi() % 5
 			if random == 0:
 				spawnproj()

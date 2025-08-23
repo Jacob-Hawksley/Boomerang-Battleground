@@ -3,6 +3,7 @@ var randomcard = null
 @export var bounce: PackedScene = preload("res://bouncy.tscn")
 @export var healthy: PackedScene = preload("res://healthy.tscn")
 @onready var player: CharacterBody2D = get_node('../Player')
+@export var explosive = preload("res://explosive.tscn")
 var wavebuffer = false
 func _process(delta: float) -> void:
 	if Main.gamestate == 'upgrade' and wavebuffer == false:
@@ -10,7 +11,7 @@ func _process(delta: float) -> void:
 		wavebuffer = true
 		get_tree().paused = true
 		for i in range(2):
-			randomcard = randi() % 2
+			randomcard = randi() % 3
 			if randomcard == 0:
 				var b = bounce.instantiate()
 				add_child(b)
@@ -31,9 +32,18 @@ func _process(delta: float) -> void:
 				else:
 					h.position.x += 49.5
 					h.position.y += -48
+			if randomcard == 2:
+				var e = explosive.instantiate()
+				add_child(e)
+				e.position = player.global_position
+				if i == 0:
+					e.position.x += -181.5
+					e.position.y += -49
+				else:
+					e.position.x += 49.5
+					e.position.y += -48
 	if Main.upgraded == true:
-			print('a')
-			Main.wavetimer = 10
+			Main.wavetimer = 60
 			Main.wave += 1
 			Main.hpscale *= 1.1
 			Main.damagescale *= 1.1

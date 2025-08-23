@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	Main.maxhp += 3
+	Main.explosive = true
 	Main.upgraded = true
