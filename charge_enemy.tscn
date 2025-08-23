@@ -1,0 +1,140 @@
+[gd_scene load_steps=21 format=3 uid="uid://ct43o61uqdmlc"]
+
+[ext_resource type="Texture2D" uid="uid://d3ix6f0a444pu" path="res://dinoCharactersVersion1.1/sheets/DinoSprites - mort.png" id="1_0y8uh"]
+[ext_resource type="Script" uid="uid://crlyyxkkeexmh" path="res://charge_enemy.gd" id="1_mardl"]
+[ext_resource type="Texture2D" uid="uid://2l1ieuc5we08" path="res://bottomhp.png" id="3_u72ei"]
+[ext_resource type="Texture2D" uid="uid://ch65r1rtb04us" path="res://Tophp.png" id="4_2w1dg"]
+[ext_resource type="Texture2D" uid="uid://b4c7fbiuo2fvf" path="res://Enemyhp.png" id="5_2r6ju"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mardl"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(408, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw8qf"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(432, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rtpg"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(456, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u72ei"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(480, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w1dg"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(504, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r6ju"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(528, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ng4"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7p00"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhd2q"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xulx7"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ojqp"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqxtc"]
+atlas = ExtResource("1_0y8uh")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bmkp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mardl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw8qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rtpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u72ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w1dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r6ju")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76ng4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7p00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhd2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xulx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ojqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqxtc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0y8uh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mardl"]
+
+[node name="ChargeEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_mardl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3bmkp")
+animation = &"charge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0y8uh")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -13.0
+offset_top = -16.0
+offset_right = 165.0
+offset_bottom = 15.0
+scale = Vector2(0.145643, 0.145643)
+nine_patch_stretch = true
+texture_under = ExtResource("3_u72ei")
+texture_over = ExtResource("4_2w1dg")
+texture_progress = ExtResource("5_2r6ju")
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CircleShape2D_mardl")
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

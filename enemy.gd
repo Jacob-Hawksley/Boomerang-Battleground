@@ -1,6 +1,7 @@
 extends Node
 @export var basicenemy = preload("res://basic_enemy.tscn")
 @export var projenemy = preload("res://projectile_enemy.tscn")
+@export var chargeenemy = preload("res://charge_enemy.tscn")
 var random = 0
 func _ready() -> void:
 	Main.enemynumber = 0
@@ -9,7 +10,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Main.gamestate == 'wave' and Main.enemynumber < Main.enemymax:
-		if Main.wave >= 3:
+		if Main.wave >= 5:
+			random = randi() % 5
+			if random == 0:
+				spawnproj()
+			if random == 1:
+				spawncharge()
+			else:
+				spawnbasic()
+		elif Main.wave >= 3:
 			random = randi() % 5
 			if random == 0:
 				spawnproj()
@@ -29,4 +38,8 @@ func spawnbasic():
 func spawnproj():
 	var p = projenemy.instantiate()
 	add_child(p)
+	Main.enemynumber += 1
+func spawncharge():
+	var c = chargeenemy.instantiate()
+	add_child(c)
 	Main.enemynumber += 1

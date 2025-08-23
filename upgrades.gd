@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 		spawn_upgrade_cards()
 		
 	if Main.upgraded == true:
-		Main.wavetimer = 10
+		Main.wavetimer = 60
 		Main.wave += 1
 		Main.hpscale *= 1.1
 		Main.damagescale *= 1.1
