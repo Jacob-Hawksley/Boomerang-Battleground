@@ -13,5 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
+	if Main.explosive:
+		Main.explosiondamage *= 1.3
 	Main.explosive = true
 	Main.upgraded = true

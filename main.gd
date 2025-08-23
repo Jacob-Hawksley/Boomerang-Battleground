@@ -12,3 +12,4 @@ var hpscale = 1
 var damagescale = 1
 var maxhp = 7
 var explosive = false
+var explosiondamage = 80
