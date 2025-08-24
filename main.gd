@@ -1,7 +1,7 @@
 extends Node
 
 var thrown = null
-var gamestate = 'wave'
+var gamestate = 'mainmenu'
 var enemynumber = null
 var enemymax = null
 var wave = 1

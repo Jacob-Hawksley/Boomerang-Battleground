@@ -18,15 +18,24 @@ func _process(delta: float) -> void:
 	else:
 		visible = false
 		disabled = true
-	if Input.is_action_just_pressed("menu"):
-		if Main.gamestate != 'menu':
+	if Input.is_action_just_pressed("menu"): 
+		if Main.gamestate == 'wave':
 			menu()
 		elif Main.gamestate == 'mainmenu':
-			pass
+			get_tree().paused = false
+			Main.gamestate = 'wave'
+			
 		else:
 			unmenu()
-		
-
+	if Input.is_action_just_pressed("left"):
+		if Main.gamestate == 'wave':
+			menu()
+		elif Main.gamestate == 'mainmenu':
+			get_tree().paused = false
+			Main.gamestate = 'wave'
+			
+		else:
+			unmenu()
 func menu():
 	get_tree().paused = true
 	tempstate = Main.gamestate
@@ -37,4 +46,9 @@ func unmenu():
 
 
 func _on_pressed() -> void:
-	unmenu()
+	if Main.gamestate == 'mainmenu':
+		get_tree().paused = false
+		Main.gamestate = 'wave'
+			
+	else:
+		unmenu()

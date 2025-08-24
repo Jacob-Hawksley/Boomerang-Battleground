@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var xpbar: Label = $Camera2D/xp
 var iframes = false
 var reqxp = 5
+var waveiframe = 3
 
 
 func _ready() -> void:
@@ -18,6 +19,13 @@ func _ready() -> void:
 	Main.hp = Main.maxhp
 
 func _process(delta: float) -> void:
+	if Main.gamestate == 'wave' and waveiframe > 0:
+		waveiframe -= delta
+		iframes = true
+	elif waveiframe <= 0:
+		iframes = false
+	if Main.gamestate == 'upgrade':
+		waveiframe = 3
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	hpbar.max_value = Main.maxhp

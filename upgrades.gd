@@ -8,6 +8,7 @@ var randomcard = null
 @export var fastthrows = preload('res://fast_throws.tscn')
 var wavebuffer = false
 var upgrade_spawned = false
+var shop1 = null
 
 func _process(delta: float) -> void:
 	if Main.gamestate == 'upgrade' and not wavebuffer and not upgrade_spawned:
@@ -33,6 +34,10 @@ func spawn_upgrade_cards():
 	
 	for i in range(2):
 		randomcard = randi() % 5
+		if shop1 == null:	
+			shop1 = randomcard
+		while shop1 == randomcard:
+			randomcard = randi() % 5
 		var card_instance = null
 		
 		match randomcard:
@@ -52,9 +57,9 @@ func spawn_upgrade_cards():
 			card_instance.position = player.global_position
 			if i == 0:
 				card_instance.slots('left')
-				card_instance.position.x += -181.5
+				card_instance.position.x += -231.5
 				card_instance.position.y += -49
 			else:
 				card_instance.slots('right')
-				card_instance.position.x += 49.5
+				card_instance.position.x += 99.5
 				card_instance.position.y += -48

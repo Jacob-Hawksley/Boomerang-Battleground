@@ -10,6 +10,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Main.thrown == true:
 		visible = false
-	else:
+	elif Main.gamestate == 'menu':
+		visible = false
+	elif Main.gamestate == 'mainmenu':
+		visible = false
+	elif not Main.thrown and Main.gamestate == 'wave':
 		visible = true
-		

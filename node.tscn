@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cxw4bc0mgpkc5"]
+[gd_scene load_steps=47 format=4 uid="uid://cxw4bc0mgpkc5"]
 
 [ext_resource type="Texture2D" uid="uid://d4np6dkc8msj5" path="res://TilesNew-export.png" id="1_sy5k4"]
 [ext_resource type="Script" uid="uid://b3uhk34lfaqnj" path="res://main.gd" id="1_tda05"]
@@ -8,10 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://daoryqx8v5eq5" path="res://boomerang.png" id="5_qn3nj"]
 [ext_resource type="Script" uid="uid://csl12rbrtwqlq" path="res://player_boomerang.gd" id="6_l6pdb"]
 [ext_resource type="Texture2D" uid="uid://2l1ieuc5we08" path="res://bottomhp.png" id="6_oaeeq"]
+[ext_resource type="Texture2D" uid="uid://cy5f1pmubdn8p" path="res://MainMenu.png" id="7_2wy2p"]
 [ext_resource type="Texture2D" uid="uid://dv85tncsl141c" path="res://Playerhp.png" id="7_ey15c"]
 [ext_resource type="Script" uid="uid://dipgrvg52c0r1" path="res://marker_2d.gd" id="7_l6pdb"]
 [ext_resource type="PackedScene" uid="uid://dc5pldnfo6251" path="res://bullet.tscn" id="7_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://dh4xn6rsus3gk" path="res://Arrow.png" id="8_r657h"]
+[ext_resource type="Script" uid="uid://dysw1c0ojlq8a" path="res://mainmenu.gd" id="8_w6pri"]
 [ext_resource type="Script" uid="uid://dxs02jn58y0bt" path="res://arrow.gd" id="9_f0urt"]
 [ext_resource type="Script" uid="uid://bdxesetdklt4s" path="res://label.gd" id="9_twhnx"]
 [ext_resource type="Script" uid="uid://jriygc1dts66" path="res://play.gd" id="10_3xwg0"]
@@ -158,6 +160,7 @@ position = Vector2(860, 1233)
 shape = SubResource("RectangleShape2D_e2u21")
 
 [node name="Enemy" type="Node" parent="."]
+process_mode = 1
 script = ExtResource("11_jfkdj")
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Marker")]
@@ -177,6 +180,13 @@ autoplay = "default"
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(3.49997, -1.00002)
 position_smoothing_speed = 20.0
+
+[node name="Mainmenu" type="Sprite2D" parent="Player/Camera2D"]
+process_mode = 3
+position = Vector2(-4.49997, 2.00868e-05)
+scale = Vector2(3.56742, 3.56742)
+texture = ExtResource("7_2wy2p")
+script = ExtResource("8_w6pri")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Player/Camera2D"]
 offset_left = -566.5
@@ -237,6 +247,7 @@ offset_bottom = -250.0
 horizontal_alignment = 1
 
 [node name="PlayerBoomerang" type="Sprite2D" parent="Player"]
+visible = false
 position = Vector2(35.3, -16.6)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_qn3nj")
@@ -247,6 +258,7 @@ position = Vector2(34.3, -16.6)
 script = ExtResource("7_l6pdb")
 
 [node name="arrow" type="Sprite2D" parent="Player/Marker2D"]
+visible = false
 position = Vector2(47.2, 0)
 rotation = 1.5708
 scale = Vector2(0.115196, 0.115196)
