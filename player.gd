@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		hpbar.max_value = Main.maxhp
 		Main.hp = Main.maxhp
 	if Main.hp <= 0:
-		get_tree().quit()
+		get_tree().quit(0)
 	hpnum.text = str(floor(Main.hp)) + '/' + str(Main.maxhp)
 	if Main.hp < Main.maxhp:
 		Main.hp += Main.hpregen * delta

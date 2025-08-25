@@ -14,9 +14,8 @@ func _process(delta: float) -> void:
 	if Main.gamestate == 'upgrade' and not wavebuffer and not upgrade_spawned:
 		upgrade_spawned = true  # Immediately prevent multiple spawns
 		spawn_upgrade_cards()
-		
 	if Main.upgraded == true:
-		Main.wavetimer = 20
+		Main.wavetimer = 60
 		Main.wave += 1
 		Main.hpscale *= 1.1
 		Main.damagescale *= 1.1
@@ -63,3 +62,4 @@ func spawn_upgrade_cards():
 				card_instance.slots('right')
 				card_instance.position.x += 99.5
 				card_instance.position.y += -48
+	shop1 = null
