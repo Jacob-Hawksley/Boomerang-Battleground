@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	else:
 		visible = false
 		disabled = true
-	if Input.is_action_just_pressed("menu"): 
+	if Input.is_action_just_pressed("menu") and Main.gamestate != 'controls': 
 		if Main.gamestate == 'wave':
 			menu()
 		elif Main.gamestate == 'mainmenu':
