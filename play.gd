@@ -1,6 +1,6 @@
 extends Button
 
-var tempstate = null
+var tempstate = 'wave'
 var highlighted = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,9 +28,7 @@ func _process(delta: float) -> void:
 		else:
 			unmenu()
 	if Input.is_action_just_pressed("left"):
-		if Main.gamestate == 'wave':
-			menu()
-		elif Main.gamestate == 'mainmenu':
+		if Main.gamestate == 'mainmenu':
 			get_tree().paused = false
 			Main.gamestate = 'wave'
 			
