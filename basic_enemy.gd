@@ -1,9 +1,9 @@
 extends CharacterBody2D
 const basehp = 100
-var speed = 120
+var speed = 200
 var player: CharacterBody2D 
-var hp = 100
-var maxhp = 100
+var hp = 90
+var maxhp = 90
 var basedamage = 1
 var damage = 1
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D

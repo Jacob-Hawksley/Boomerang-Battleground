@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 			
 		else:
 			unmenu()
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("leftup"):
 		if Main.gamestate == 'mainmenu':
 			get_tree().paused = false
 			Main.gamestate = 'wave'
@@ -43,10 +43,11 @@ func unmenu():
 	Main.gamestate = tempstate
 
 
+
 func _on_pressed() -> void:
 	if Main.gamestate == 'mainmenu':
 		get_tree().paused = false
 		Main.gamestate = 'wave'
-			
+
 	else:
 		unmenu()

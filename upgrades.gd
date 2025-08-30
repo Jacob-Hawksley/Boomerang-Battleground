@@ -12,7 +12,7 @@ var shop1 = null
 
 func _process(delta: float) -> void:
 	if Main.gamestate == 'upgrade' and not wavebuffer and not upgrade_spawned:
-		upgrade_spawned = true  # Immediately prevent multiple spawns
+		upgrade_spawned = true  
 		spawn_upgrade_cards()
 	if Main.upgraded == true:
 		if Main.wave <= 2:
@@ -29,10 +29,9 @@ func _process(delta: float) -> void:
 		get_tree().paused = false
 		Main.upgraded = false
 		wavebuffer = false
-		upgrade_spawned = false  # Reset for next upgrade phase
+		upgrade_spawned = false 
 
 func spawn_upgrade_cards():
-	await get_tree().create_timer(0.2).timeout
 	wavebuffer = true
 	get_tree().paused = true
 	
@@ -60,11 +59,11 @@ func spawn_upgrade_cards():
 			add_child(card_instance)
 			card_instance.position = player.global_position
 			if i == 0:
-				card_instance.slots('left')
+				card_instance.slots('leftup')
 				card_instance.position.x += -231.5
 				card_instance.position.y += -49
 			else:
-				card_instance.slots('right')
+				card_instance.slots('rightup')
 				card_instance.position.x += 99.5
 				card_instance.position.y += -48
 	shop1 = null

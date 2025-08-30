@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dii0pogshqbw5" path="res://upgrade_healthy.gd" id="2_16gxb"]
 
 [node name="Healthy" type="Button"]
+z_index = 1
 offset_right = 8.0
 offset_bottom = 8.0
 text = "HEALTHY

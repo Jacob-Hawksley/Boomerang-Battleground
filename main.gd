@@ -21,3 +21,6 @@ var explosionsize = 8
 var leech = 0
 var throwcd = 2
 var hp = 7
+var autoaim = false
+var closestenemy = null
+var enemylist = []

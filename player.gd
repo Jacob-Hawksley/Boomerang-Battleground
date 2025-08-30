@@ -10,7 +10,7 @@ extends CharacterBody2D
 var iframes = false
 var reqxp = 5
 var waveiframe = 3
-
+var closestenemy = Vector2.ZERO
 
 func _ready() -> void:
 	position.x = 500
@@ -26,6 +26,8 @@ func _process(delta: float) -> void:
 		iframes = false
 	if Main.gamestate == 'upgrade':
 		waveiframe = 3
+	if Main.autoaim:
+		shoot()
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	hpbar.max_value = Main.maxhp
