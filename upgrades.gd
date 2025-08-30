@@ -15,7 +15,12 @@ func _process(delta: float) -> void:
 		upgrade_spawned = true  # Immediately prevent multiple spawns
 		spawn_upgrade_cards()
 	if Main.upgraded == true:
-		Main.wavetimer = 60
+		if Main.wave <= 2:
+			Main.wavetimer = 20
+		elif Main.wave <= 5:
+			Main.wavetimer = 40
+		else:
+			Main.wavetimer = 60
 		Main.wave += 1
 		Main.hpscale *= 1.1
 		Main.damagescale *= 1.1
