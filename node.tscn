@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://cxw4bc0mgpkc5"]
+[gd_scene load_steps=59 format=4 uid="uid://cxw4bc0mgpkc5"]
 
 [ext_resource type="Texture2D" uid="uid://d4np6dkc8msj5" path="res://TilesNew-export.png" id="1_sy5k4"]
 [ext_resource type="Script" uid="uid://b3uhk34lfaqnj" path="res://main.gd" id="1_tda05"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://5hqr41ugpth" path="res://battleground_beats_bass.gd" id="17_p1837"]
 [ext_resource type="Texture2D" uid="uid://cvxjukry1ktvc" path="res://Autoaimicon.png" id="18_prngn"]
 [ext_resource type="Script" uid="uid://lda3u3y13s3y" path="res://autoaimicon.gd" id="19_hq5fo"]
+[ext_resource type="Texture2D" uid="uid://d1bs4qi6fn7vh" path="res://defeat.png" id="21_644nv"]
 [ext_resource type="Texture2D" uid="uid://cyli1pmkr6dwv" path="res://play.png" id="22_qv2vy"]
 [ext_resource type="Texture2D" uid="uid://bshp26thnjrla" path="res://controls.png" id="23_8jewq"]
 [ext_resource type="AudioStream" uid="uid://bgbw70cjf4vog" path="res://Battleground Beats_3.mp3" id="24_o6fs4"]
@@ -159,6 +160,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("21_644nv")
+}],
+"loop": true,
+"name": &"Defeat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("7_2wy2p")
 }],
 "loop": true,
@@ -262,6 +271,7 @@ offset_bottom = -274.0
 value = 100.0
 texture_under = ExtResource("6_oaeeq")
 texture_progress = ExtResource("7_ey15c")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Player/Camera2D/TextureProgressBar"]
 layout_mode = 0
@@ -271,6 +281,7 @@ offset_right = 104.0
 offset_bottom = 26.0
 horizontal_alignment = 1
 script = ExtResource("9_twhnx")
+metadata/_edit_use_anchors_ = true
 
 [node name="Wave" type="Label" parent="Player/Camera2D"]
 process_mode = 3
@@ -279,6 +290,7 @@ offset_top = -314.0
 offset_right = 15.5
 offset_bottom = -291.0
 script = ExtResource("13_j31fo")
+metadata/_edit_use_anchors_ = true
 
 [node name="Wavetime" type="Label" parent="Player/Camera2D"]
 process_mode = 3
@@ -288,6 +300,7 @@ offset_right = 19.5
 offset_bottom = -265.0
 horizontal_alignment = 1
 script = ExtResource("14_o6fs4")
+metadata/_edit_use_anchors_ = true
 
 [node name="xp" type="Label" parent="Player/Camera2D"]
 process_mode = 3
@@ -296,6 +309,7 @@ offset_top = -273.0
 offset_right = -476.5
 offset_bottom = -250.0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Autoaimicon" type="AnimatedSprite2D" parent="Player/Camera2D"]
 process_mode = 3
@@ -311,52 +325,47 @@ z_index = 1
 position = Vector2(2.57492e-05, 1.5974e-05)
 scale = Vector2(3.84333, 3.6)
 sprite_frames = SubResource("SpriteFrames_nha2g")
-animation = &"Mainmenu"
+animation = &"Defeat"
 script = ExtResource("8_w6pri")
 
 [node name="Play" type="Button" parent="Player/Camera2D"]
 process_mode = 3
 z_index = 2
-offset_left = -544.5
-offset_top = -83.0
-offset_right = -447.5
-offset_bottom = 15.0
+offset_left = -255.5
+offset_top = -50.0
+offset_right = -158.5
+offset_bottom = 48.0
+focus_neighbor_left = NodePath("../Controls")
+focus_neighbor_right = NodePath("../Autoaim")
 icon = ExtResource("22_qv2vy")
 script = ExtResource("10_3xwg0")
+metadata/_edit_use_anchors_ = true
 
 [node name="Controls" type="Button" parent="Player/Camera2D"]
 process_mode = 3
 z_index = 2
-offset_left = -549.5
-offset_top = 21.0
-offset_right = -452.5
-offset_bottom = 119.0
+offset_left = 172.5
+offset_top = -50.0
+offset_right = 269.5
+offset_bottom = 48.0
+focus_neighbor_left = NodePath("../Autoaim")
+focus_neighbor_right = NodePath("../Play")
 icon = ExtResource("23_8jewq")
 script = ExtResource("12_85l3h")
+metadata/_edit_use_anchors_ = true
 
 [node name="Autoaim" type="Button" parent="Player/Camera2D"]
 process_mode = 3
 z_index = 2
-offset_left = -443.5
-offset_top = -39.0
-offset_right = -346.5
-offset_bottom = 59.0
+offset_left = -46.5
+offset_top = -50.0
+offset_right = 50.5
+offset_bottom = 48.0
+focus_neighbor_left = NodePath("../Play")
+focus_neighbor_right = NodePath("../Controls")
 icon = ExtResource("25_m7n71")
 script = ExtResource("25_4bn0x")
-
-[node name="ItemList" type="ItemList" parent="Player/Camera2D"]
-z_index = 2
-layout_direction = 2
-offset_left = -58.0
-offset_top = -138.0
-offset_right = 42.0
-offset_bottom = 155.0
-item_count = 3
-same_column_width = true
-fixed_column_width = 2
-item_0/icon = ExtResource("22_qv2vy")
-item_1/icon = ExtResource("23_8jewq")
-item_2/icon = ExtResource("25_m7n71")
+metadata/_edit_use_anchors_ = true
 
 [node name="hitbox" type="Area2D" parent="Player" node_paths=PackedStringArray("player")]
 collision_layer = 2
@@ -403,7 +412,7 @@ script = ExtResource("26_85l3h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
-position = Vector2(863, 978)
+position = Vector2(983, 995)
 scale = Vector2(51.7031, 42.1875)
 sprite_frames = SubResource("SpriteFrames_4bn0x")
 

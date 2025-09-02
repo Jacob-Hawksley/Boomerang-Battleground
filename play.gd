@@ -2,6 +2,7 @@ extends Button
 
 var tempstate = 'wave'
 var highlighted = false
+var needtofocus = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -9,12 +10,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Main.gamestate != 'menu' and Main.gamestate != 'mainmenu':
+		needtofocus = true
 	if Main.gamestate == 'menu':
 		visible = true
 		disabled = false
+		if needtofocus:
+			grab_focus()
+			needtofocus = false
 	elif Main.gamestate == 'mainmenu':
 		visible = true
 		disabled = false
+		if needtofocus:
+			grab_focus()
+			needtofocus = false
 	else:
 		visible = false
 		disabled = true
@@ -27,13 +36,7 @@ func _process(delta: float) -> void:
 			
 		else:
 			unmenu()
-	if Input.is_action_just_pressed("leftup"):
-		if Main.gamestate == 'mainmenu':
-			get_tree().paused = false
-			Main.gamestate = 'wave'
-			
-		else:
-			unmenu()
+
 func menu():
 	get_tree().paused = true
 	tempstate = Main.gamestate

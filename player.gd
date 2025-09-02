@@ -11,7 +11,7 @@ var iframes = false
 var reqxp = 5
 var waveiframe = 3
 var closestenemy = Vector2.ZERO
-
+var waveiframelock = true
 func _ready() -> void:
 	position.x = 500
 	position.y = 500
@@ -22,8 +22,10 @@ func _process(delta: float) -> void:
 	if Main.gamestate == 'wave' and waveiframe > 0:
 		waveiframe -= delta
 		iframes = true
-	elif waveiframe <= 0:
+		waveiframelock = true
+	elif waveiframe <= 0 and waveiframelock:
 		iframes = false
+		waveiframelock = false
 	if Main.gamestate == 'upgrade':
 		waveiframe = 3
 	if Main.autoaim:
@@ -36,7 +38,8 @@ func _process(delta: float) -> void:
 		hpbar.max_value = Main.maxhp
 		Main.hp = Main.maxhp
 	if Main.hp <= 0:
-		get_tree().quit(0)
+		Main.gamestate = 'defeat'
+		get_tree().paused = true
 	hpnum.text = str(floor(Main.hp)) + '/' + str(Main.maxhp)
 	if Main.hp < Main.maxhp:
 		Main.hp += Main.hpregen * delta

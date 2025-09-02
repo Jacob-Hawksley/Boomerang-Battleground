@@ -39,7 +39,8 @@ func _on_body_entered(body: Node2D) -> void:
 		var e = explosion.instantiate()
 		get_node("/root/Main").add_child(e)
 		e.global_position = position
-	Main.hp += Main.leech
+	if Main.hp < Main.maxhp * 1.5:
+		Main.hp += Main.leech
 	
 		
 		

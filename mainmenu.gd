@@ -8,5 +8,8 @@ func _process(delta: float) -> void:
 	elif Main.gamestate == 'controls':
 		play("Controls")
 		visible = true
+	elif Main.gamestate == 'defeat':
+		play("Defeat")
+		visible = true
 	else:
 		visible = false
