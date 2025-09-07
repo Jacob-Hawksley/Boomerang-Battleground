@@ -1,6 +1,6 @@
 extends Area2D
 var active = false
-var damage = 1
+var damage = 3
 @onready var sprite = $AnimatedSprite2D
 func _ready() -> void:
 	sprite.play("prep")

@@ -20,12 +20,15 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Main.gamestate == 'wave' and waveiframe > 0:
+		$GPUParticles2D.emitting = true
 		waveiframe -= delta
 		iframes = true
 		waveiframelock = true
 	elif waveiframe <= 0 and waveiframelock:
 		iframes = false
 		waveiframelock = false
+	else:
+		$GPUParticles2D.emitting = false
 	if Main.gamestate == 'upgrade':
 		waveiframe = 3
 	if Main.autoaim:
@@ -46,6 +49,7 @@ func _process(delta: float) -> void:
 	if Main.xp >= reqxp:
 		Main.xp -= reqxp
 		Main.level += 1
+		$Levelup.play()
 		Main.maxhp += 1
 		Main.damagemult += 0.1
 		reqxp *= 1.3
@@ -72,5 +76,6 @@ func shoot():
 		var b = Bullet.instantiate()
 		owner.add_child(b)
 		b.transform = Marker.global_transform
+		$Throw.play()
 		await get_tree().create_timer(Main.throwcd).timeout
 		Main.thrown = false

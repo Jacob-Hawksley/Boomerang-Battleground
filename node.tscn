@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://cxw4bc0mgpkc5"]
+[gd_scene load_steps=64 format=4 uid="uid://cxw4bc0mgpkc5"]
 
 [ext_resource type="Texture2D" uid="uid://d4np6dkc8msj5" path="res://TilesNew-export.png" id="1_sy5k4"]
 [ext_resource type="Script" uid="uid://b3uhk34lfaqnj" path="res://main.gd" id="1_tda05"]
@@ -39,6 +39,10 @@
 [ext_resource type="Script" uid="uid://1nengxk43abl" path="res://upgrades.gd" id="26_85l3h"]
 [ext_resource type="Script" uid="uid://dwpehx76bkg81" path="res://detectionrange.gd" id="30_rl2iq"]
 [ext_resource type="Texture2D" uid="uid://cqe2ne41i44hx" path="res://background.png" id="33_nha2g"]
+[ext_resource type="Texture2D" uid="uid://cddd3qfst2gt8" path="res://sparkle.png" id="34_d05gg"]
+[ext_resource type="AudioStream" uid="uid://dnkqoqor1dx1g" path="res://levelup.mp3" id="35_8jbxr"]
+[ext_resource type="AudioStream" uid="uid://bp37hoet50xrn" path="res://throw.mp3" id="40_gykuw"]
+[ext_resource type="Script" uid="uid://7wasmv77q604" path="res://audio_stream_player_2d.gd" id="41_d05gg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2q8x"]
 texture = ExtResource("1_sy5k4")
@@ -178,6 +182,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_644nv"]
 radius = 420.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d05gg"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(15, 15, 15)
+gravity = Vector3(0, 98, 0)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bn0x"]
 animations = [{
 "frames": [{
@@ -304,10 +314,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="xp" type="Label" parent="Player/Camera2D"]
 process_mode = 3
-offset_left = -516.5
-offset_top = -273.0
-offset_right = -476.5
-offset_bottom = -250.0
+offset_left = -563.5
+offset_top = -279.0
+offset_right = -523.5
+offset_bottom = -256.0
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -385,6 +395,20 @@ script = ExtResource("30_rl2iq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Detectionrange"]
 shape = SubResource("CircleShape2D_644nv")
+
+[node name="Throw" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("40_gykuw")
+script = ExtResource("41_d05gg")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
+amount = 2
+texture = ExtResource("34_d05gg")
+lifetime = 0.3
+explosiveness = 0.25
+process_material = SubResource("ParticleProcessMaterial_d05gg")
+
+[node name="Levelup" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("35_8jbxr")
 
 [node name="Music" type="Node" parent="."]
 

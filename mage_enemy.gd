@@ -63,7 +63,7 @@ func hurt(amount):
 func shoot():
 	sprite.play("magic")
 	shootcd = 3
-	for i in range(3):
+	for i in range(5):
 		var m = magic.instantiate()
 		get_node("/root/Main").add_child(m)
 		m.position.x = 50 + (randi() % 1550)

@@ -22,8 +22,7 @@ func _process(delta: float) -> void:
 		disabled = true
 	if Main.gamestate == 'controls' and Input.is_action_just_pressed("menu"):
 		Main.gamestate = tempmenu
-	if Input.is_action_just_pressed('rightup'):
-		Main.gamestate = 'controls'
+
 
 func _on_pressed() -> void:
 	Main.gamestate = 'controls'
