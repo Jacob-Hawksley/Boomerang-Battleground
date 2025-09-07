@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://db82ry3xs0rfs"
+path="res://.godot/imported/Double Time.mp3-68ebced34c8284a2de10cbd5a246e285.mp3str"
+
+[deps]
+
+source_file="res://Double Time.mp3"
+dest_files=["res://.godot/imported/Double Time.mp3-68ebced34c8284a2de10cbd5a246e285.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

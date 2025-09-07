@@ -20,15 +20,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Main.gamestate == 'wave' and waveiframe > 0:
-		$GPUParticles2D.emitting = true
 		waveiframe -= delta
 		iframes = true
 		waveiframelock = true
 	elif waveiframe <= 0 and waveiframelock:
 		iframes = false
 		waveiframelock = false
-	else:
-		$GPUParticles2D.emitting = false
+
 	if Main.gamestate == 'upgrade':
 		waveiframe = 3
 	if Main.autoaim:

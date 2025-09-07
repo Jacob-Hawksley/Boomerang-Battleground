@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Main.gamestate == 'wave' and playing == false:
+	if Main.gamestate == 'wave' and Main.wave >= 3 and playing == false:
 		play()
 	elif Main.gamestate != 'wave':
 		stop()
