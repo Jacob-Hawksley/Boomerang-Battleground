@@ -35,9 +35,9 @@ func _process(delta: float) -> void:
 				spawnproj()
 			else:
 				spawnbasic()
-		else:
+		elif Main.wave > 0:
 			spawnbasic()
-	if Main.gamestate == 'wave':
+	if Main.gamestate == 'wave' and Main.wave != 0:
 		Main.wavetimer -= delta
 	if Main.wavetimer <= 0:
 		Main.gamestate = 'upgrade'
